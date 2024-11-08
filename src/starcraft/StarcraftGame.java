@@ -32,13 +32,13 @@ public class StarcraftGame {
 			Unit unit=null;
 			int type=ran.nextInt(4);
 			if(type == TANK)
-				unit = new Tank();
+				unit = new Tank(i+1);
 			else if(type == MARINE)
-				unit = new Marine();
+				unit = new Marine(i+1);
 			else if(type == SCV)
-				unit = new SCV();
+				unit = new SCV(i+1);
 			else if(type == DROPSHIP)
-				unit = new DropShip();
+				unit = new DropShip(i+1);
 			units.add(unit);
 		}
 	}
@@ -68,8 +68,11 @@ public class StarcraftGame {
 			destroyUnit();
 			
 			if(units.size()==1) {
+				System.out.println("====================================");
 				System.out.println("전쟁이 끝났습니다.");
+				System.out.println(units.get(0).name + "만이 살아남았습니다.");
 			}else if(units.size()==0){
+				System.out.println("====================================");
 				System.out.println("전멸했습니다.");
 			}
 			
@@ -90,7 +93,9 @@ public class StarcraftGame {
 		}
 		for(int i=0;i<destroyUnits.size();i++) {
 			Unit unit = destroyUnits.get(i);
-			System.out.println(unit.name+"이 파괴되었습니다.");
+			System.out.println("＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋");
+			System.out.println(String.format("＋%14s(이)가 파괴되었습니다.   ＋", unit.name));
+			System.out.println("＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋");
 			units.remove(unit);
 		}
 	}
