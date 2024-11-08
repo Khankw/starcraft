@@ -66,7 +66,8 @@ public class StarcraftGame {
 				if (repair == 0 && targetUnit instanceof Repairable) {
 					SCV scv = (SCV) unit;
 					Repairable repairUnit = (Repairable) targetUnit;
-					scv.repair(repairUnit);
+					if(targetUnit.hp < targetUnit.MAX_HP)
+						scv.repair(repairUnit);
 					attack = false;
 				}
 			}
@@ -81,14 +82,13 @@ public class StarcraftGame {
 			if (units.size() == 1) {
 				System.out.println("====================================");
 				System.out.println("전쟁이 끝났습니다.");
-				System.out.println(units.get(0).name + "만이 살아남았습니다.");
-			} else if (units.size() == 0) {
-				System.out.println("====================================");
-				System.out.println("전멸했습니다.");
-			}
+
+				System.out.println(unit.name + "만이 살아남았습니다. 남은 HP : "+ unit.hp);
+				break;
+			} 
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(300);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
