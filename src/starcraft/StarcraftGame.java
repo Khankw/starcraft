@@ -52,10 +52,6 @@ public class StarcraftGame {
 			}
 			Unit unit = units.get(idx);
 			Unit targetUnit = units.get(targetIdx);
-			if(unit instanceof Attackable) {
-				Attackable attacker = (Attackable) unit;
-				attacker.attack(targetUnit);
-			}
 			
 			if(unit instanceof AirUnit) {
 				int fly=ran.nextInt(2);
@@ -64,6 +60,22 @@ public class StarcraftGame {
 					airUnit.fly();
 				}
 			}
+			boolean attack = true;
+			if(unit instanceof SCV) {
+				int repair = ran.nextInt(2);
+				if(repair==0 && targetUnit instanceof Repairable) {
+					SCV scv= (SCV) unit;
+					Repairable repairUnit=(Repairable) targetUnit;
+					scv.repair(repairUnit);
+					attack = false;
+				}
+			}
+
+			if(attack && unit instanceof Attackable) {
+				Attackable attacker = (Attackable) unit;
+				attacker.attack(targetUnit);
+			}
+			
 			
 			destroyUnit();
 			
@@ -93,9 +105,9 @@ public class StarcraftGame {
 		}
 		for(int i=0;i<destroyUnits.size();i++) {
 			Unit unit = destroyUnits.get(i);
-			System.out.println("＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋");
-			System.out.println(String.format("＋%14s(이)가 파괴되었습니다.   ＋", unit.name));
-			System.out.println("＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋");
+			System.out.println("††††††††††††††††††††††††††††††††††††");
+			System.out.println(String.format("†%14s(이)가 파괴되었습니다.    †", unit.name));
+			System.out.println("††††††††††††††††††††††††††††††††††††\n");
 			units.remove(unit);
 		}
 	}
