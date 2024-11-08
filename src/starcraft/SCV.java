@@ -2,7 +2,7 @@ package starcraft;
 
 public class SCV extends GroundUnit implements Repairable, Attackable {
 	public SCV(int index) {
-		super("SCV"+index, 80, 1);
+		super("SCV" + index, 80, 1);
 	}
 
 	public void repair(Repairable unit) {
@@ -10,9 +10,10 @@ public class SCV extends GroundUnit implements Repairable, Attackable {
 			System.out.println("------------------------------------");
 			Unit target = (Unit) unit;
 
-			int repairCost=10;
+			int repairCost = 10;
+			String msg = "";
 			while (target.hp < target.MAX_HP && repairCost > 0) {
-				String msg = String.format("%s 수리중... [%d/%d]", target.name, target.hp, target.MAX_HP);
+				msg = String.format("%s가 %s 수리중... [%d/%d]", this.name, target.name, target.hp, target.MAX_HP);
 				System.out.println(msg);
 
 				try {
@@ -23,8 +24,9 @@ public class SCV extends GroundUnit implements Repairable, Attackable {
 				target.hp++;
 				repairCost--;
 			}
-			System.out.println(target.name + " 수리완료.\n");
-			
+			msg = String.format("%s가 %s 수리완료.  [%d/%d]\n", this.name, target.name, target.hp, target.MAX_HP);
+			System.out.println(msg);
+
 		}
 	}
 
