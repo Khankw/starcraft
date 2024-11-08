@@ -8,9 +8,13 @@ public class DropShip extends AirUnit implements Repairable {
 	@Override
 	void fly() {
 		isFly = !isFly;
-		if(isFly)
-			System.out.println(name + "이 이륙했습니다.");
-		else
-			System.out.println(name + "이 착륙했습니다.");
+		if(isFly) {
+			System.out.println("---------------↑↑↑↑↑↑---------------");
+			System.out.println(name + "이 이륙했습니다.\n");
+		}
+		else {
+			System.out.println("------------↓↓↓------↓↓↓------------");
+			System.out.println(name + "이 착륙했습니다.\n");
+		}
 	}
 }
