@@ -1,8 +1,28 @@
 package starcraft;
 
 public class Marine extends GroundUnit implements Attackable {
+	private int lastTurn = 0;
+
 	public Marine(int index) {
-		super("Marine"+index, 100, 5);
+		super("Marine" + index, 100, 20);
+	}
+
+	public void healing(int turn) {
+		if (hp == MAX_HP) {
+			lastTurn= turn;
+			return;
+		}
+		
+		int elapsedTime = turn - lastTurn;
+		int curHP=hp;
+		hp += elapsedTime;
+		if (hp > MAX_HP)
+			hp = MAX_HP;
+
+		System.out.println("------------------------------------");
+		System.out.println(name + "이 "+ (hp-curHP) +"만큼 자가치유되었습니다.");
+		
+		lastTurn= turn;
 	}
 
 	@Override
