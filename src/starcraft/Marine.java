@@ -9,20 +9,20 @@ public class Marine extends GroundUnit implements Attackable {
 
 	public void healing(int turn) {
 		if (hp == MAX_HP) {
-			lastTurn= turn;
+			lastTurn = turn;
 			return;
 		}
-		
+
 		int elapsedTime = turn - lastTurn;
-		int curHP=hp;
-		hp += elapsedTime;
+		int curHP = hp;
+		hp += elapsedTime / 2 + 1;
 		if (hp > MAX_HP)
 			hp = MAX_HP;
 
 		System.out.println("------------------------------------");
-		System.out.println(name + "이 "+ (hp-curHP) +"만큼 자가치유되었습니다.");
-		
-		lastTurn= turn;
+		System.out.println(name + "이 " + (hp - curHP) + "만큼 자가치유되었습니다.");
+
+		lastTurn = turn;
 	}
 
 	@Override
