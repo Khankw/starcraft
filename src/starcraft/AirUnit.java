@@ -1,8 +1,10 @@
 package starcraft;
 
 abstract public class AirUnit extends Unit {
-	protected AirUnit(String name, int hp) {
-		super(name, hp);
+	protected boolean isFly = true;
+	
+	protected AirUnit(String name, int hp, int attack) {
+		super(name, hp, attack);
 	}
 
 	abstract void fly();
