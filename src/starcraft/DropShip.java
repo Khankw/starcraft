@@ -1,16 +1,16 @@
 package starcraft;
 
 public class DropShip extends AirUnit implements Repairable {
-	public DropShip() {
-		super("DropShip", 120, 0);
+	public DropShip(int index) {
+		super("DropShip"+index, 120, 0);
 	}
 
 	@Override
 	void fly() {
 		isFly = !isFly;
 		if(isFly)
-			System.out.println(name + " Fly!");
+			System.out.println(name + "이 이륙했습니다.");
 		else
-			System.out.println(name + " Landing!");
+			System.out.println(name + "이 착륙했습니다.");
 	}
 }

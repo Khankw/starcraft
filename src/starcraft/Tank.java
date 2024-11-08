@@ -1,8 +1,8 @@
 package starcraft;
 
 public class Tank extends GroundUnit implements Repairable, Attackable {
-	public Tank() {
-		super("Tank", 150, 50);
+	public Tank(int index) {
+		super("Tank"+index, 150, 50);
 	}
 
 	@Override

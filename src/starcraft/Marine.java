@@ -1,8 +1,8 @@
 package starcraft;
 
 public class Marine extends GroundUnit implements Attackable {
-	public Marine() {
-		super("Marine", 100, 5);
+	public Marine(int index) {
+		super("Marine"+index, 100, 5);
 	}
 
 	@Override

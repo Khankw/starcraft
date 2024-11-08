@@ -1,8 +1,8 @@
 package starcraft;
 
 public class SCV extends GroundUnit implements Repairable, Attackable {
-	public SCV() {
-		super("SCV", 80, 1);
+	public SCV(int index) {
+		super("SCV"+index, 80, 1);
 	}
 
 	public void repair(Repairable unit) {
