@@ -47,7 +47,7 @@ public class StarcraftGame {
 		int turn = 0;
 		while (true) {
 			System.out.println(++turn + "번째 턴 >>>");
-			
+
 			int idx = ran.nextInt(units.size());
 			int targetIdx = ran.nextInt(units.size());
 			if (idx == targetIdx) {
@@ -57,15 +57,15 @@ public class StarcraftGame {
 			Unit targetUnit = units.get(targetIdx);
 
 			if (unit instanceof Marine) {
-				Marine marine= (Marine) unit;
+				Marine marine = (Marine) unit;
 				marine.healing(turn);
 			}
-			
+
 			if (targetUnit instanceof Marine) {
-				Marine marine= (Marine) targetUnit;
+				Marine marine = (Marine) targetUnit;
 				marine.healing(turn);
 			}
-			
+
 			if (unit instanceof AirUnit) {
 				int fly = ran.nextInt(2);
 				if (fly == 0) {
@@ -79,7 +79,7 @@ public class StarcraftGame {
 				if (repair == 0 && targetUnit instanceof Repairable) {
 					SCV scv = (SCV) unit;
 					Repairable repairUnit = (Repairable) targetUnit;
-					if(targetUnit.hp < targetUnit.MAX_HP)
+					if (targetUnit.hp < targetUnit.MAX_HP)
 						scv.repair(repairUnit);
 					attack = false;
 				}
@@ -96,10 +96,10 @@ public class StarcraftGame {
 				System.out.println("====================================");
 				System.out.println(turn + "번째 턴에 전쟁이 끝났습니다.");
 
-				System.out.println(unit.name + "만이 살아남았습니다. 남은 HP : "+ unit.hp);
+				System.out.println(unit.name + "만이 살아남았습니다. 남은 HP : " + unit.hp);
 				break;
-			} 
-			
+			}
+
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
